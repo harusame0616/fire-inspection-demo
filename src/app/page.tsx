@@ -24,6 +24,7 @@ const inputSchema = v.object({
 	office: v.string(),
 	address: v.string(),
 	zoning: v.string(),
+	officeType: v.string(),
 	constructionType: v.enum(ConstructionType),
 	totalFloorArea: v.pipe(v.string(), v.regex(/^\d+$/)),
 });
@@ -83,6 +84,18 @@ export default function Home() {
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel>用途地域</FormLabel>
+										<FormControl>
+											<Input {...field} />
+										</FormControl>
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name="officeType"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>用途</FormLabel>
 										<FormControl>
 											<Input {...field} />
 										</FormControl>
