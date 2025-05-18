@@ -152,7 +152,13 @@ export default function Home() {
 									</FormItem>
 								)}
 							/>
-							<Button type="submit">審査する</Button>
+							<Button type="submit" disabled={form.formState.isSubmitting}>
+								{form.formState.isSubmitting ? (
+									<RotateCw className="w-4 h-4 animate-spin" />
+								) : (
+									"審査する"
+								)}
+							</Button>
 						</form>
 					</Form>
 				</CardContent>
