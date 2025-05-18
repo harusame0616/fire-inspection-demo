@@ -32,6 +32,7 @@ export async function inspectAction({
 	const response = await openai.chat.completions.create({
 		model: "gpt-4o",
 		response_format: zodResponseFormat(inspectionSchema, "inspection"),
+		temperature: 0,
 
 		messages: [
 			{
