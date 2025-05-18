@@ -164,38 +164,42 @@ export default function Home() {
 						<div className="flex items-center justify-center">
 							<RotateCw className="w-4 h-4 animate-spin" />
 						</div>
-					) : (
+					) : inspectionResult ? (
 						<div className="flex flex-col gap-2">
 							<div>
 								<h2>自動火災報知機</h2>
 								<ul>
 									<li>
 										設置義務：
-										{inspectionResult?.automaticFireAlarmSystem
+										{inspectionResult.automaticFireAlarmSystem
 											.installationObligation
 											? "あり"
 											: "なし"}
 									</li>
 									<li>
 										判定の根拠法令：
-										{inspectionResult?.automaticFireAlarmSystem.basisOfJudgment}
+										{inspectionResult.automaticFireAlarmSystem.basisOfJudgment}
 									</li>
 									<li>
 										設置基準：
 										{
-											inspectionResult?.automaticFireAlarmSystem
+											inspectionResult.automaticFireAlarmSystem
 												.installationStandard
 										}
 									</li>
 									<li>
 										構造・性能規格：
 										{
-											inspectionResult?.automaticFireAlarmSystem
+											inspectionResult.automaticFireAlarmSystem
 												.structureSpecification
 										}
 									</li>
 								</ul>
 							</div>
+						</div>
+					) : (
+						<div className="flex items-center justify-center">
+							<p>入力フォームに情報を記入し、審査を行ってください</p>
 						</div>
 					)}
 				</CardContent>
