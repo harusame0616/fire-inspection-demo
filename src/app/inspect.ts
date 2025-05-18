@@ -3,6 +3,7 @@ import { OpenAI } from "openai";
 import { z } from "zod";
 import { zodResponseFormat } from "openai/helpers/zod";
 import type { InspectionResult } from "./type";
+import { headers } from "next/headers";
 type InspectActionParams = {
 	office: string;
 	address: string;
@@ -27,6 +28,21 @@ export async function inspectAction({
 	constructionType,
 	totalFloorArea,
 }: InspectActionParams) {
+	console.dir(
+		{
+			params: {
+				office,
+				address,
+				zoning,
+				constructionType,
+				totalFloorArea,
+			},
+			headers: Object.fromEntries((await headers()).entries()),
+		},
+		{
+			depth: null,
+		},
+	);
 	const openai = new OpenAI();
 
 	const response = await openai.chat.completions.create({
