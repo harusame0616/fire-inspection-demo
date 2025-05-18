@@ -30,7 +30,7 @@ export async function inspectAction({
 	const openai = new OpenAI();
 
 	const response = await openai.chat.completions.create({
-		model: "gpt-4o-mini",
+		model: "gpt-4o",
 		response_format: zodResponseFormat(inspectionSchema, "inspection"),
 
 		messages: [
