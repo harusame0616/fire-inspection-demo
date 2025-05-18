@@ -167,32 +167,43 @@ export default function Home() {
 					) : inspectionResult ? (
 						<div className="flex flex-col gap-2">
 							<div>
-								<h2>自動火災報知機</h2>
+								<h2 className="font-bold text-lg">自動火災報知機</h2>
 								<ul>
 									<li>
 										設置義務：
-										{inspectionResult.automaticFireAlarmSystem
-											.installationObligation
-											? "あり"
-											: "なし"}
+										<span className="font-bold">
+											{inspectionResult.automaticFireAlarmSystem
+												.installationObligation
+												? "あり"
+												: "なし"}
+										</span>
 									</li>
 									<li>
 										判定の根拠法令：
-										{inspectionResult.automaticFireAlarmSystem.basisOfJudgment}
+										<span className="font-bold">
+											{
+												inspectionResult.automaticFireAlarmSystem
+													.basisOfJudgment
+											}
+										</span>
 									</li>
 									<li>
 										設置基準：
-										{
-											inspectionResult.automaticFireAlarmSystem
-												.installationStandard
-										}
+										<span className="font-bold">
+											{
+												inspectionResult.automaticFireAlarmSystem
+													.installationStandard
+											}
+										</span>
 									</li>
 									<li>
 										構造・性能規格：
-										{
-											inspectionResult.automaticFireAlarmSystem
-												.structureSpecification
-										}
+										<span className="font-bold">
+											{
+												inspectionResult.automaticFireAlarmSystem
+													.structureSpecification
+											}
+										</span>
 									</li>
 								</ul>
 							</div>
