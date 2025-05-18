@@ -167,16 +167,19 @@ export default function Home() {
 				<CardHeader>審査結果</CardHeader>
 				<CardContent>
 					{form.formState.isSubmitting ? (
-						<div className="flex items-center justify-center">
-							<RotateCw className="w-4 h-4 animate-spin" />
+						<div className="flex flex-col items-center justify-center gap-4">
+							<div>審査中です</div>
+							<div>
+								<RotateCw className="w-4 h-4 animate-spin" />
+							</div>
 						</div>
 					) : inspectionResult ? (
 						<div className="flex flex-col gap-2">
 							<div>
 								<h2 className="font-bold text-lg">自動火災報知機</h2>
-								<ul>
-									<li>
-										設置義務：
+								<ul className="flex flex-col gap-1">
+									<li className="flex flex-col">
+										<span className="text-sm">設置義務</span>
 										<span className="font-bold">
 											{inspectionResult.automaticFireAlarmSystem
 												.installationObligation
@@ -184,8 +187,8 @@ export default function Home() {
 												: "なし"}
 										</span>
 									</li>
-									<li>
-										判定の根拠法令：
+									<li className="flex flex-col">
+										<span className="text-sm">判定の根拠法令</span>
 										<span className="font-bold">
 											{
 												inspectionResult.automaticFireAlarmSystem
@@ -193,8 +196,8 @@ export default function Home() {
 											}
 										</span>
 									</li>
-									<li>
-										設置基準：
+									<li className="flex flex-col">
+										<span className="text-sm">設置基準</span>
 										<span className="font-bold">
 											{
 												inspectionResult.automaticFireAlarmSystem
@@ -202,8 +205,8 @@ export default function Home() {
 											}
 										</span>
 									</li>
-									<li>
-										構造・性能規格：
+									<li className="flex flex-col">
+										<span className="text-sm">構造・性能規格</span>
 										<span className="font-bold">
 											{
 												inspectionResult.automaticFireAlarmSystem

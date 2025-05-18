@@ -46,10 +46,9 @@ export async function inspectAction({
 	const openai = new OpenAI();
 
 	const response = await openai.chat.completions.create({
-		model: "gpt-4o",
+		model: "gpt-4.1",
 		response_format: zodResponseFormat(inspectionSchema, "inspection"),
 		temperature: 0,
-
 		messages: [
 			{
 				role: "system",
@@ -67,9 +66,9 @@ export async function inspectAction({
                 {
                    "automaticFireAlarmSystem": {
                     "installationObligation": true,
-                    "basisOfJudgment": "消防法施行令 第32条 第１項 第１号",
-                    "installationStandard": "１項イ（病院等）で延べ面積300m²を超える場合に義務あり",
-                    "structureSpecification": "消防法施行規則 第24条の2〜第26条、消防用設備等の技術上の基準（告示第34号）に基づき設置"
+                    "basisOfJudgment": "◯ 第◯条 第◯項 第◯号",
+                    "installationStandard": "◯項◯（◯）で◯◯◯の場合に設置義務あり/なし",
+                    "structureSpecification": "◯ 第◯条の◯〜第◯条、◯◯◯◯（告示第◯号）に基づき設置"
                    }
                 }
                 `,
