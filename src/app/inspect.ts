@@ -9,6 +9,7 @@ type InspectActionParams = {
 	address: string;
 	zoning: string;
 	constructionType: string;
+	officeType: string;
 	totalFloorArea: number;
 };
 
@@ -30,20 +31,22 @@ export async function inspectAction({
 	constructionType,
 	totalFloorArea,
 }: InspectActionParams) {
-	console.dir(
-		{
-			params: {
-				office,
-				address,
-				zoning,
-				constructionType,
-				totalFloorArea,
+	console.log(
+		JSON.stringify(
+			{
+				params: {
+					office,
+					address,
+					zoning,
+					officeType,
+					constructionType,
+					totalFloorArea,
+				},
+				headers: Object.fromEntries((await headers()).entries()),
 			},
-			headers: Object.fromEntries((await headers()).entries()),
-		},
-		{
-			depth: null,
-		},
+			null,
+			4,
+		),
 	);
 	const openai = new OpenAI();
 
@@ -164,7 +167,7 @@ export async function inspectAction({
 		],
 	});
 
-	console.dir(response, { depth: null });
+	console.log(JSON.stringify(response, null, 4));
 
 	return JSON.parse(
 		response.choices[0].message.content ?? "{}",
